@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shallow vs Deep Copy</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../video-pages/main.css">
+</head>
+<body>
+    <header>
+        <h1>Shallow vs Deep Copy</h1>
+    </header>
+    <main>
+        <div id="output"></div>
+    </main>    
+    <script>
+        /*Deep Copy methods*/
+        
+        let shallowArr = [123, 
+                          'Padma', 
+                          true, 
+                          null, 
+                          undefined];
+        
+        let deepArr = [123, 
+                       'Padma', 
+                       true, 
+                       ['vishu', 'raju', 'viju'], 
+                       {'river':'Ganga', 
+                        'city': 'Haridwar'}
+                      ];
+        
+        let deepObj = {
+            'characters': [ 'rishi','raj','madhur','cisco'],
+            'places': ['goa','Pune','food court'],
+            'grad68': false,
+            'Index': 5
+        }
+        
+        let newObj = {...deepObj};
+        //newObj.places[0] = 'India'; //changed inside ref.
+        //newObj.places = ['India', 'Calcutta']; //new ref
+        console.log(newObj, deepObj);
+        let otherObj = JSON.parse(JSON.stringify(deepObj));
+        otherObj.places[0] = 'India';
+       console.log(otherObj, deepObj);
+    
+     
+       /* Shallow Copy Method */
+        let s = 'Sayali';
+        let g = s;
+        s = 'new value';
+        //console.log(s, g);
+        
+        let arr = Array.from(shallowArr);
+        //let arr1 = [...shallowArr];
+        shallowArr[0] = 456;
+       // console.log(arr, shallowArr);
+        
+    </script>
+</body>
+</html>
